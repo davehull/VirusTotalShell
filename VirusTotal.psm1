@@ -10,6 +10,7 @@
 .LINK
     https://psvirustotal.codeplex.com
 #>
+Add-Type -AssemblyName System.Security
 
 function Set-VTApiKey {
     [CmdletBinding()]
