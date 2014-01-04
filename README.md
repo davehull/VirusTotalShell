@@ -4,7 +4,7 @@ VirulentShell
 A fork of David B Heise's VirusTotal Powershell Module
 
 ##Example Usage
-```Powershell
+```
 PS E:\hunt\data> Import-Module .\VirusTotal.psm1
 PS E:\hunt\data> Get-Command -Module VirusTotal
 
@@ -44,12 +44,12 @@ REMARKS
     None
 ```
 You can combine this script with the output from something like https://github.com/davehull/Get-StakRank#get-stakrank or hashes from Autorunsc.exe and do useful things like:
-```Powershell
+```
 PS E:\hunt\data> $data = Import-Csv -Delimiter "`t" '.\FIN-Image Path-MD5.tsv' 
 PS E:\hunt\data> $data | ? { $_.Count -lt 10 -and $_.MD5.length -gt 3 } | select -unique MD5 -ExpandProperty MD5 | % { Get-VTReport -hash $_ | select scan_date, positives, resource, verbose_msg, permalink; sleep 15 }
 ```
 This will return something like the following:
-```Powershell
+```
 scan_date   :
 positives   :
 resource    : 06f12e6478246b0f7ef11f2a6735b876
@@ -82,6 +82,6 @@ permalink   : https://www.virustotal.com/file/1d4d787047200fc7bcbfc03a496cafda8e
 ...
 ```
 And of course, you can pipe this out to a file by running it as follows:
-```Powershell
+```
 PS E:\hunt\data> $($data | ? { $_.Count -lt 10 -and $_.MD5.length -gt 3 } | select -unique MD5 -ExpandProperty MD5 | % { Get-VTReport -hash $_ | select scan_date, positives, resource, verbose_msg, permalink | ConvertTo-Csv -Delimiter "`t" -NoTypeInformation; sleep 15 } ) | Add-Content -Encoding Ascii vt-results.tsv
 ```
