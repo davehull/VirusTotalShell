@@ -5,8 +5,8 @@ A fork of David B Heise's VirusTotal Powershell Module
 
 ##Example Usage
 ```Powershell
-Import-Module .\VirusTotal.psm1
-Get-Command -Module VirusTotal
+PS E:\hunt\data> Import-Module .\VirusTotal.psm1
+PS E:\hunt\data> Get-Command -Module VirusTotal
 
 CommandType     Name                                               ModuleName
 -----------     ----                                               ----------
@@ -17,9 +17,9 @@ Function        Invoke-VTScan                                      VirusTotal
 Function        New-VTComment                                      VirusTotal
 Function        Set-VTApiKey                                       VirusTotal
 
-Set-VTApiKey -VTApiKey yourVTAPIkeyhere
+PS E:\hunt\data> Set-VTApiKey -VTApiKey yourVTAPIkeyhere
 
-PS C:\VirulentShell> Get-Help Get-VTReport
+PS E:\hunt\data> Get-Help Get-VTReport
 
 NAME
     Get-VTReport
