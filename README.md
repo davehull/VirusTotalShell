@@ -2,6 +2,7 @@ VirusTotalShell
 =============
 
 A fork of David B Heise's VirusTotal Powershell Module
+http://psvirustotal.codeplex.com/SourceControl/latest#VirusTotal.psm1
 
 ##Example Usage
 ```
