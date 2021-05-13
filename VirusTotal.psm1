@@ -160,7 +160,7 @@ function Invoke-VTScan {
             $b = (Get-AsciiBytes ('Content-Disposition: form-data; name="file"; filename="' + $file.Name + '";'))
             $body.Write($b, 0, $b.Length)
             $body.Write($CRLF, 0, $CRLF.Length)            
-            $b = (GgetAsciiBytes 'Content-Type:application/octet-stream')
+            $b = (Get-AsciiBytes 'Content-Type:application/octet-stream')
             $body.Write($b, 0, $b.Length)
             
             $body.Write($CRLF, 0, $CRLF.Length)
