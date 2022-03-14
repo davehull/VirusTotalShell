@@ -62,12 +62,12 @@ function Get-VTReport {
 
           trap
           {
-            if ($stream -ne $null) { $stream.Close(); }
+            if ($null -ne $stream) { $stream.Close(); }
             break;
           }
 
           # Convert the hash to Hex
-          $hashByteArray | foreach { $result += $_.ToString("X2") }
+          $hashByteArray | ForEach-Object { $result += $_.ToString("X2") }
           return $result
         }
     }
@@ -93,7 +93,7 @@ function Get-VTReport {
         "uri" {
             $u = $UriUri
             $method = 'POST'
-            $body = @{ url = $uri; apikey = $VTApiKey}
+            $body = @{ resource = $uri; apikey = $VTApiKey}
             }
         "ipaddress" {
             $u = $IPUri
@@ -160,7 +160,7 @@ function Invoke-VTScan {
             $b = (Get-AsciiBytes ('Content-Disposition: form-data; name="file"; filename="' + $file.Name + '";'))
             $body.Write($b, 0, $b.Length)
             $body.Write($CRLF, 0, $CRLF.Length)            
-            $b = (GgetAsciiBytes 'Content-Type:application/octet-stream')
+            $b = (Get-AsciiBytes 'Content-Type:application/octet-stream')
             $body.Write($b, 0, $b.Length)
             
             $body.Write($CRLF, 0, $CRLF.Length)
